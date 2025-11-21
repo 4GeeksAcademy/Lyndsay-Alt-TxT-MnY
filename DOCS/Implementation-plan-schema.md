@@ -509,3 +509,255 @@ As a user, I want bills to automatically show their current status (Paid, Due So
     Use this section to summarize development sessions, bug fixes, or major updates.
     Example: "2025-10-10  Completed MVP login flow; integrated Supabase + Clerk."
 -->
+
+- **2025-11-20** - MVP features defined: User Phone Registration, Bill CRUD, Budget Dashboard, SMS Reminders, Status Calculation Engine
+- **2025-11-21** - Tech stack confirmed: React 19 + Vite 7 + TypeScript + Tailwind CSS + Supabase + date-fns. Implementation plan finalized.
+- **2025-11-21** - Phase 0 COMPLETED: Supabase configured, database schema deployed, connection verified, project structure set up.
+- **2025-11-21** - Phase 1 COMPLETED: Bill service functions, CRUD operations, and status calculation logic implemented.
+- **2025-11-21** - Phase 2 COMPLETED: Full bill management UI with forms, cards, lists, modals, and filtering.
+- **2025-11-21** - Phase 3 COMPLETED: Budget dashboard with metrics, progress bar, and status breakdown visualization.
+- **2025-11-21** - Phase 4 COMPLETED: User settings with phone registration, E.164 validation, localStorage persistence, navigation, and RLS policies enabled.
+- **2025-11-21** - Phase 5 COMPLETED: SMS reminder system with Twilio integration, reminder scheduler, duplicate prevention, SMS templates, and test panel.
+
+---
+
+## Phased Implementation Plan
+
+### Phase 0: Project Setup & Infrastructure (Foundation)
+**Goal:** Set up Supabase, environment configuration, and project structure
+
+**Tasks:**
+1. Create Supabase project and obtain API keys
+2. Set up environment variables (.env file with SUPABASE_URL and SUPABASE_ANON_KEY)
+3. Create Supabase client configuration file
+4. Design and create database tables (users, bills)
+5. Set up Row Level Security policies (if multi-user)
+6. Create project folder structure (components, pages, services, utils, types)
+7. Install additional dependencies (React Hook Form, Twilio SDK if testing SMS)
+8. Configure Supabase connection and test basic query
+
+**Acceptance Criteria:**
+- [ ] Supabase project created and credentials stored securely
+- [ ] Database schema deployed with proper constraints
+- [ ] Supabase client successfully connects from React app
+- [ ] Environment variables properly configured
+- [ ] Project structure organized and scalable
+
+**Status:** Not Started  
+**Estimated Time:** 2-3 hours
+
+**UPDATE 2025-11-21:** ✅ **COMPLETED**
+- Supabase project created and configured
+- Environment variables set up (.env file)
+- Database schema deployed (users and bills tables)
+- Supabase client configured and tested
+- Project folder structure created
+- React Hook Form installed
+- Connection verified successfully
+
+---
+
+### Phase 1: Core Data Layer & Bill Management (Backend First)
+**Goal:** Implement database operations and bill CRUD functionality
+
+**Related Features:**
+- Feature: Bill Creation and Management (Backend portion)
+- Feature: Bill Status Calculation Engine
+
+**Tasks:**
+1. Create `bills` table schema in Supabase with all fields
+2. Create TypeScript types/interfaces for Bill data
+3. Build Supabase service functions (createBill, getBills, updateBill, deleteBill)
+4. Implement status calculation utility function
+5. Create mock data for testing
+6. Test all CRUD operations via console/Postman
+
+**Acceptance Criteria:**
+- [ ] Bills table exists with proper schema
+- [ ] TypeScript interfaces match database schema
+- [ ] All CRUD operations work correctly
+- [ ] Status calculation logic is accurate
+- [ ] Error handling implemented for database operations
+
+**Status:** Not Started  
+**Estimated Time:** 3-4 hours
+
+---
+
+### Phase 2: Bill UI Components (Frontend)
+**Goal:** Build reusable UI components for bill display and management
+
+**Related Features:**
+- Feature: Bill Creation and Management (Frontend)
+- Feature: Bill Status Calculation Engine (Display)
+
+**Tasks:**
+1. Create BillForm component (Add/Edit with React Hook Form)
+2. Create BillCard component with status indicators
+3. Create BillList component with filtering
+4. Add category selector dropdown
+5. Implement status color coding (red, yellow, green, blue)
+6. Add "Mark as Paid" button functionality
+7. Implement delete confirmation modal
+8. Make components responsive with Tailwind
+
+**Acceptance Criteria:**
+- [ ] Users can add new bills via form
+- [ ] Bills display with correct status colors
+- [ ] Bills can be edited and deleted
+- [ ] Form validation prevents invalid data
+- [ ] UI is responsive on mobile and desktop
+- [ ] Category filtering works correctly
+
+**Status:** Not Started  
+**Estimated Time:** 5-6 hours
+
+---
+
+### Phase 3: Budget Dashboard (Analytics & Visualization)
+**Goal:** Display financial summary with calculated metrics
+
+**Related Features:**
+- Feature: Budget Summary Dashboard
+
+**Tasks:**
+1. Create Dashboard component layout
+2. Build MetricCard component for key stats
+3. Implement calculations (total, paid, remaining, percentage)
+4. Create progress bar/circle component
+5. Add status breakdown counts
+6. Implement real-time updates when bills change
+7. Add empty state for zero bills
+8. Style with Tailwind for visual clarity
+
+**Acceptance Criteria:**
+- [ ] Dashboard shows accurate totals
+- [ ] Progress percentage calculates correctly
+- [ ] Dashboard updates when bills are modified
+- [ ] Empty state displays appropriately
+- [ ] Layout is clean and easy to read
+
+**Status:** Not Started  
+**Estimated Time:** 4-5 hours
+
+---
+
+### Phase 4: User Settings & Phone Registration
+**Goal:** Allow users to save phone number for SMS notifications
+
+**Related Features:**
+- Feature: User Phone Number Registration
+
+**Tasks:**
+1. Create `users` table (or use localStorage for MVP)
+2. Build Settings/Profile page component
+3. Create PhoneInput component with validation
+4. Implement phone number save/update functionality
+5. Add phone format validation (E.164)
+6. Display success/error messages
+7. Persist phone number across sessions
+
+**Acceptance Criteria:**
+- [ ] Users can enter and save phone number
+- [ ] Phone validation works for various formats
+- [ ] Phone number persists after refresh
+- [ ] Error messages display for invalid input
+
+**Status:** Not Started  
+**Estimated Time:** 2-3 hours
+
+---
+
+### Phase 5: SMS Integration (Notifications)
+**Goal:** Set up Twilio and implement SMS reminder system
+
+**Related Features:**
+- Feature: SMS Reminder System
+
+**Tasks:**
+1. Create Twilio account and get credentials
+2. Set up Supabase Edge Function for sending SMS
+3. Create SMS service module with send function
+4. Implement scheduled job logic (Supabase pg_cron or external)
+5. Build query to find bills due in 1, 3 days with SMS enabled
+6. Create SMS message templates
+7. Add `last_reminder_sent` field to bills table
+8. Implement duplicate prevention logic
+9. Add error handling and retry mechanism
+10. Test SMS delivery with real phone numbers
+
+**Acceptance Criteria:**
+- [ ] SMS sends successfully via Twilio
+- [ ] Reminders trigger at correct intervals (3 days, 1 day, due date)
+- [ ] Only SMS-enabled bills receive notifications
+- [ ] Duplicate messages are prevented
+- [ ] Failed sends are logged and retried
+- [ ] SMS content is clear and actionable
+
+**Status:** Not Started  
+**Estimated Time:** 6-8 hours (includes Twilio setup and testing)
+
+---
+
+### Phase 6: Polish & Testing (Quality Assurance)
+**Goal:** Final refinements, bug fixes, and comprehensive testing
+
+**Tasks:**
+1. Add loading states to all async operations
+2. Improve error messages and user feedback
+3. Test all features end-to-end
+4. Fix responsive design issues
+5. Optimize performance (lazy loading, code splitting)
+6. Add accessibility features (ARIA labels, keyboard navigation)
+7. Cross-browser testing
+8. Mobile device testing
+9. Update documentation
+
+**Acceptance Criteria:**
+- [ ] All features work without errors
+- [ ] Loading states prevent user confusion
+- [ ] App works on Chrome, Firefox, Safari
+- [ ] Mobile experience is smooth
+- [ ] No console errors or warnings
+- [ ] Accessibility score is acceptable
+
+**Status:** Not Started  
+**Estimated Time:** 4-5 hours
+
+---
+
+### Phase 7: Deployment (Go Live)
+**Goal:** Deploy application to production
+
+**Tasks:**
+1. Set up Vercel or Netlify account
+2. Connect GitHub repository
+3. Configure environment variables in hosting platform
+4. Test build process locally
+5. Deploy to production
+6. Verify all features work in production
+7. Set up custom domain (optional)
+8. Configure Supabase production policies
+9. Monitor error logs
+
+**Acceptance Criteria:**
+- [ ] Application is live and accessible
+- [ ] All features work in production
+- [ ] Environment variables are secure
+- [ ] SSL certificate is active
+- [ ] Database connections are stable
+
+**Status:** Not Started  
+**Estimated Time:** 2-3 hours
+
+---
+
+## Total Estimated Time: 28-37 hours
+
+**Recommended Development Order:**
+1. Phase 0 → Phase 1 → Phase 2 (Core functionality)
+2. Phase 3 → Phase 4 (User experience)
+3. Phase 5 (Advanced features)
+4. Phase 6 → Phase 7 (Launch)
+
+**Critical Path:** Phases 0, 1, 2 must be completed before others. Phase 5 (SMS) can be done last if needed.

@@ -151,13 +151,29 @@ Deliver a functional bill tracking system with three core features:
     Example: "Frontend: React + Vite | Backend: Flask | Database: Supabase | Deployment: Vercel MCP"
 -->
 
-**Tech Stack (To Be Finalized):**
-- **Frontend:** TBD (React, Vue, or similar modern framework)
-- **Backend:** TBD (Node.js, Python Flask, or similar)
-- **Database:** TBD (PostgreSQL, MongoDB, or Supabase)
-- **SMS Service:** TBD (Twilio, AWS SNS, or similar)
-- **Hosting/Deployment:** TBD (Vercel, Netlify, Railway, or similar)
-- **Authentication:** TBD (if user accounts needed)
+**Confirmed Tech Stack:**
+
+**Frontend:**
+- React 19.2.0 (UI framework)
+- Vite 7.2.4 (build tool and dev server)
+- TypeScript 5.9.3 (type safety)
+- Tailwind CSS 4.1.17 (styling)
+- date-fns 4.1.0 (date manipulation)
+
+**Backend & Database:**
+- Supabase (PostgreSQL database, Authentication, Real-time, Edge Functions)
+- @supabase/supabase-js 2.84.0 (JavaScript client)
+
+**Code Quality:**
+- ESLint 9.39.1 (linting)
+- TypeScript ESLint (type checking)
+
+**To Be Added:**
+- **SMS Service:** Twilio (for bill reminders)
+- **Form Handling:** React Hook Form (form validation)
+- **State Management:** React Context API (built-in) or Zustand (if needed)
+- **Deployment:** Vercel or Netlify (frontend hosting)
+- **Cron Jobs:** Supabase pg_cron or external service for SMS reminders
 
 
 
@@ -191,6 +207,7 @@ Deliver a functional bill tracking system with three core features:
 -->
 
 - **2025-11-20** - Initial product definition created based on MVP Product Planner. Core features identified: Visual Bill Tracker, Budget Dashboard, and SMS Reminder System.
+- **2025-11-21** - Tech stack finalized: React 19 + Vite 7 + TypeScript + Tailwind CSS + Supabase. Ready for implementation.
 
 
 
